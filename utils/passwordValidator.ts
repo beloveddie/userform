@@ -6,7 +6,7 @@ export const passwordValidator = (password: string): ValidatorReturnType => {
 
   if (password.length === 0) {
     message = "Password is required";
-  } else if (password.length < 5) {
+  } else if (password.length < 8) {
     message = "Password should be minimum 8 characters";
   } else {
     message = "";
