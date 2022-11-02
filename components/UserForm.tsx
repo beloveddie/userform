@@ -52,6 +52,14 @@ const UserForm = () => {
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
+        <Form.Text className={styles.form_text}>
+          Hint 💁🏾‍♀️💡: strengthen your password.
+        </Form.Text>
+        {passwordError && (
+          <Alert variant="danger" className={styles.form_alert}>
+            {passwordError}
+          </Alert>
+        )}
       </Form.Group>
       {passwordError && <Alert variant="danger">{passwordError}</Alert>}
       <Button variant="primary" type="submit">
