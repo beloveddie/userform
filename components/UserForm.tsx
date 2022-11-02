@@ -51,6 +51,7 @@ const UserForm = () => {
           type="email"
           placeholder="Enter email"
           onChange={(e) => setEmail(e.target.value)}
+          value={email}
         />
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
@@ -64,6 +65,7 @@ const UserForm = () => {
           type="password"
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
+          value={password}
         />
       </Form.Group>
       {passwordError && <Alert variant="danger">{passwordError}</Alert>}
