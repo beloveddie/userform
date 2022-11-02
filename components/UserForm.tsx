@@ -11,8 +11,9 @@ const UserForm = () => {
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    let emailValid = false;
-    // some basic validation
+    let emailValid = false,
+      passwordValid = false;
+    // some basic validation for email
     if (email.length === 0) {
       setEmailError("Email is required");
     } else if (email.length < 6) {
@@ -23,7 +24,18 @@ const UserForm = () => {
       setEmailError("");
       emailValid = true;
     }
-    if (emailValid) {
+    //   some basic validation for password
+    if (password.length === 0) {
+      setPasswordError("Password is required");
+    } else if (password.length < 5) {
+      setPasswordError("Password should be minimum 8 characters");
+    } else if (password.includes(email)) {
+      setPasswordError("Password shouldn't contain your email");
+    } else {
+      setPasswordError("");
+      passwordValid = true;
+    }
+    if (emailValid && password) {
       alert("Email: " + email + "\nPassword: " + password);
     }
   };
