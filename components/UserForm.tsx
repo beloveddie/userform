@@ -37,6 +37,8 @@ const UserForm = () => {
     }
     if (emailValid && password) {
       alert("Email: " + email + "\nPassword: " + password);
+      setEmail("");
+      setPassword("");
     }
   };
 
