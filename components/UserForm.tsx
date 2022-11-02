@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
-import "bootstrap/dist/css/bootstrap.min.css";
+import styles from "../styles/UserForm.module.css";
 import { emailValidator } from "../utils/emailValidator";
 import { passwordValidator } from "../utils/passwordValidator";
 
@@ -29,24 +29,30 @@ const UserForm = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
+    <Form onSubmit={handleSubmit} className={styles.form_cnt}>
+      <Form.Group className={styles.form_group} controlId="formBasicEmail">
+        <Form.Label className={styles.form_label}>Email address</Form.Label>
         <Form.Control
+          className={styles.form_control}
           type="email"
           placeholder="Enter email"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
-        <Form.Text className="text-muted">
+        <Form.Text className={styles.form_text}>
           We'll never share your email with anyone else.
         </Form.Text>
+        {emailError && (
+          <Alert variant="danger" className={styles.form_alert}>
+            {emailError}
+          </Alert>
+        )}
       </Form.Group>
-      {emailError && <Alert variant="danger">{emailError}</Alert>}
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
+      <Form.Group className={styles.form_group} controlId="formBasicPassword">
+        <Form.Label className={styles.form_label}>Password</Form.Label>
         <Form.Control
+          className={styles.form_control}
           type="password"
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
@@ -61,8 +67,11 @@ const UserForm = () => {
           </Alert>
         )}
       </Form.Group>
-      {passwordError && <Alert variant="danger">{passwordError}</Alert>}
-      <Button variant="primary" type="submit">
+      <Button
+        className={styles.form_submit_btn}
+        variant="primary"
+        type="submit"
+      >
         Submit
       </Button>
     </Form>
