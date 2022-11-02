@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const UserForm = () => {
@@ -55,6 +56,7 @@ const UserForm = () => {
           We'll never share your email with anyone else.
         </Form.Text>
       </Form.Group>
+      {emailError && <Alert variant="danger">{emailError}</Alert>}
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
@@ -64,6 +66,7 @@ const UserForm = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </Form.Group>
+      {passwordError && <Alert variant="danger">{passwordError}</Alert>}
       <Button variant="primary" type="submit">
         Submit
       </Button>
