@@ -36,7 +36,7 @@ const UserForm = () => {
       setPasswordError("");
       passwordValid = true;
     }
-    if (emailValid && password) {
+    if (emailValid && passwordValid) {
       alert("Email: " + email + "\nPassword: " + password);
       setEmail("");
       setPassword("");
